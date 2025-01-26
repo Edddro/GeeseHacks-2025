@@ -21,7 +21,7 @@ const Navbar: React.FC = () => {
 
   const navItems = [
     { name: 'Home', path: '/' },
-    { name: 'Map', path: '/about' },
+    { name: 'Map', path: '/map' },
     { name: 'Friends', path: '/setup' },
     { name: 'Account', path: '/resources' },
   ];

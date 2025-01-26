@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/HomePage";
 import Footer from "./components/Footer"
 import Navbar from "./components/Navbar"
-
+import Map from "./pages/MapPage"
 
 const App: React.FC = () => {
   return (
@@ -14,6 +14,7 @@ const App: React.FC = () => {
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/map" element={<Map />} />
           </Routes>
         </main>
         <Footer />
