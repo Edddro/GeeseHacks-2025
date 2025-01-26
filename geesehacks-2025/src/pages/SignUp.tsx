@@ -10,7 +10,7 @@ export default function SignupForm() {
     const [school, setSchool] = useState("");
     const [major, setMajor] = useState("");
     const [password, setPassword] = useState("");
-    // const [name, setName] = useState("");
+    const [name, setName] = useState("Goosling");
     const [yearOfStudy, setYearOfStudy] = useState("1");
     const [formErrors, setFormErrors] = useState<string[]>([]);
     const navigate = useNavigate();
