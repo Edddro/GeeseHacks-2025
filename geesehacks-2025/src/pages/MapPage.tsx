@@ -19,7 +19,6 @@ interface Person {
 }
 
 const Map: React.FC = () => {
-  const [name, setName] = useState("Goosling");
   const [activities, setActivities] = useState<Activity[]>([]);
   const [people, setPeople] = useState<Person[]>([]);
   const [currentGroup, setCurrentGroup] = useState<Person[]>([]);
