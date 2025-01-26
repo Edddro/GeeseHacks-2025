@@ -14,6 +14,8 @@ interface Person {
   interests: string[];
   description: string;
   distance: number;
+  latitude: number;
+  longitude: number;
 }
 
 const Map: React.FC = () => {
@@ -35,11 +37,15 @@ const Map: React.FC = () => {
     fetch("/people.json")
       .then((response) => response.json())
       .then((data) => {
-        const peopleWithDistance = data.map((person: Person) => ({
-          ...person,
-          distance: Math.floor(Math.random() * 5) + 1,
-        }));
-        setPeople(peopleWithDistance);
+        if (Array.isArray(data)) {
+          const peopleWithDistance = data.map((person: Person) => ({
+            ...person,
+            distance: Math.floor(Math.random() * 5) + 1,
+          }));
+          setPeople(peopleWithDistance);
+        } else {
+          console.error("Invalid data format received:", data);
+        }
       })
       .catch((error) => console.error("Failed to load people:", error));
   }, []);
@@ -67,13 +73,17 @@ const Map: React.FC = () => {
     fetch("/people.json")
       .then((response) => response.json())
       .then((data) => {
-        const peopleWithDistance = data.map((person: Person) => ({
-          ...person,
-          distance: Math.floor(Math.random() * 5) + 1,
-        }));
-        setPeople(peopleWithDistance);
-        generateNewGroup(); // Regenerate group with new people data
-        setSelectedPerson(null); // Reset selected person
+        if (Array.isArray(data)) {
+          const peopleWithDistance = data.map((person: Person) => ({
+            ...person,
+            distance: Math.floor(Math.random() * 5) + 1,
+          }));
+          setPeople(peopleWithDistance);
+          generateNewGroup(); // Regenerate group with new people data
+          setSelectedPerson(null); // Reset selected person
+        } else {
+          console.error("Invalid data format received:", data);
+        }
       })
       .catch((error) => console.error("Failed to load people:", error));
   };
@@ -92,8 +102,9 @@ const Map: React.FC = () => {
     );
     return { within1km, within3km, within5km };
   };
-
-  const { within1km, within3km, within5km } = groupByDistance(currentGroup);
+  const { within1km, within3km, within5km } = groupByDistance(
+    currentGroup || []
+  );
 
   return (
     <div className="p-6 text-gray-800">
@@ -112,11 +123,38 @@ const Map: React.FC = () => {
       {/* Map Section */}
       <div className="relative mb-8 w-3/4 mx-auto">
         <div className="w-full h-72 bg-gray-200 rounded-lg shadow-md relative">
-          <img
-            src="/assets/map.png"
-            alt="Map"
-            className="w-full h-full object-cover rounded-lg"
-          />
+          {selectedPerson ? (
+            // Show Google Maps iframe with selected person's coordinates
+            selectedPerson.latitude && selectedPerson.longitude ? (
+              <iframe
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                loading="lazy"
+                allowFullScreen
+                referrerPolicy="no-referrer-when-downgrade"
+                src={`https://www.google.com/maps/embed/v1/place?key=${
+                  import.meta.env.VITE_GOOGLE_MAPS_API_KEY
+                }&q=${selectedPerson.latitude},${selectedPerson.longitude}`}
+              ></iframe>
+            ) : (
+              <p>Location data for this person is unavailable.</p>
+            )
+          ) : (
+            // Show map of University of Waterloo by default
+            <iframe
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              loading="lazy"
+              allowFullScreen
+              referrerPolicy="no-referrer-when-downgrade"
+              src={`https://www.google.com/maps/embed/v1/place?key=${
+                import.meta.env.VITE_GOOGLE_MAPS_API_KEY
+              }&q=University+of+Waterloo`}
+            ></iframe>
+          )}
+
           {selectedPerson && (
             <div className="absolute top-4 left-4 bg-white p-4 rounded-lg shadow-lg">
               <h3 className="text-lg font-semibold text-gray-800">
@@ -220,7 +258,9 @@ const Map: React.FC = () => {
                   <div
                     key={index}
                     onClick={() =>
-                      handleIconClick(index + within1km.length + within3km.length)
+                      handleIconClick(
+                        index + within1km.length + within3km.length
+                      )
                     } // Adjust index for 5km group
                     className={`w-12 h-12 rounded-full font-bold flex items-center justify-center cursor-pointer hover:bg-blue-200 ${
                       selectedPerson === person
@@ -236,38 +276,29 @@ const Map: React.FC = () => {
           )}
         </div>
 
-        {/* Ongoing Activities Section */}
-        <div className="w-full max-w-3xl">
-          <h2 className="text-xl font-bold mb-4 text-blue-800 text-center">
+        {/* Ongoing Activities */}
+        <div className="flex flex-col items-center max-w-sm mx-auto">
+          <h3 className="text-xl font-semibold text-blue-800 mb-4">
             Ongoing Activities
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {activities.map((activity, idx) => (
+          </h3>
+          <div>
+            {activities.map((activity, index) => (
               <div
-                key={idx}
-                className="bg-white rounded-lg shadow-md overflow-hidden"
+                key={index}
+                className="mb-4 p-4 bg-white shadow-lg rounded-lg border border-gray-300"
               >
+                <h4 className="text-lg font-semibold text-blue-800">
+                  {activity.title}
+                </h4>
+                <p className="text-gray-600">{activity.participants}</p>
+                <p className="text-gray-500">{activity.location}</p>
                 <img
                   src={activity.image}
                   alt={activity.title}
-                  className="w-full h-36 object-cover"
+                  className="w-full mt-4 rounded-lg"
                 />
-                <div className="p-4">
-                  <h3 className="text-lg font-semibold text-gray-800">
-                    {activity.title}
-                  </h3>
-                  <p className="text-gray-600">{activity.participants}</p>
-                  <p className="text-gray-600">{activity.location}</p>
-                </div>
               </div>
             ))}
-          </div>
-
-          {/* New Button for Adding Activity */}
-          <div className="flex justify-center mt-6">
-            <button className="px-4 py-2 bg-blue-800 text-white font-bold rounded-lg shadow-md hover:bg-blue-700 max-w-3xl w-full">
-              + Add a new activity
-            </button>
           </div>
         </div>
       </div>

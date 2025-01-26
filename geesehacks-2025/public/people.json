@@ -1,143 +1,163 @@
-
 [
   {
     "name": "Alice Wang",
     "age": 21,
     "major": "Computer Science",
     "interests": ["Coding", "Hiking", "Photography"],
-    "description": "Enthusiastic about AI and loves exploring nature on weekends."
+    "latitude": 43.47211,
+    "longitude": -80.528208
   },
   {
     "name": "Bob Chen",
     "age": 23,
     "major": "Mechanical Engineering",
     "interests": ["Robotics", "Gaming", "Basketball"],
-    "description": "Building robots by day and scoring threes by night."
+    "latitude": 43.467525,
+    "longitude": -80.527707
   },
   {
     "name": "Cathy Zhang",
     "age": 20,
     "major": "Biochemistry",
     "interests": ["Cooking", "Research", "Volunteering"],
-    "description": "Passionate about sustainability and healthy eating habits."
+    "latitude": 43.47452,
+    "longitude": -80.531611
   },
   {
     "name": "David Lee",
     "age": 22,
     "major": "Mathematics",
     "interests": ["Puzzles", "Chess", "Traveling"],
-    "description": "Always ready for a mental challenge or a spontaneous adventure."
+    "latitude": 43.474434,
+    "longitude": -80.53518
   },
   {
     "name": "Eva Patel",
     "age": 21,
     "major": "Environmental Engineering",
     "interests": ["Gardening", "Music", "Reading"],
-    "description": "Committed to making the world greener, one step at a time."
+    "latitude": 43.470555,
+    "longitude": -80.537686
   },
   {
     "name": "Frank Nguyen",
     "age": 24,
     "major": "Civil Engineering",
     "interests": ["Building", "Running", "Art"],
-    "description": "From designing cities to exploring galleries, creativity is key."
+    "latitude": 43.468315,
+    "longitude": -80.541949
   },
   {
     "name": "Grace Yu",
     "age": 22,
     "major": "Chemical Engineering",
     "interests": ["Painting", "Cycling", "Yoga"],
-    "description": "Blends science and art for a creative approach to life."
+    "latitude": 43.472965,
+    "longitude": -80.533411
   },
   {
     "name": "Harry Smith",
     "age": 23,
     "major": "Physics",
     "interests": ["Astronomy", "Camping", "Singing"],
-    "description": "Fascinated by the universe and loves stargazing under clear skies."
+    "latitude": 43.47129,
+    "longitude": -80.529166
   },
   {
     "name": "Irene Parker",
     "age": 20,
     "major": "Architecture",
     "interests": ["Designing", "Movies", "Dancing"],
-    "description": "Reimagining spaces and moving to the rhythm of creativity."
+    "latitude": 43.468956,
+    "longitude": -80.53356
   },
   {
     "name": "Jack Turner",
     "age": 25,
     "major": "Aerospace Engineering",
     "interests": ["Space Exploration", "Flying", "Photography"],
-    "description": "Dreaming of the stars and building the future of flight."
+
+    "latitude": 43.469681,
+    "longitude": -80.530171
   },
   {
     "name": "Kara Lee",
     "age": 21,
     "major": "Economics",
     "interests": ["Investing", "Traveling", "Painting"],
-    "description": "Finding balance between numbers and artistic expression."
+    "latitude": 43.473142,
+    "longitude": -80.538124
   },
   {
     "name": "Leo Ramirez",
     "age": 22,
     "major": "Electrical Engineering",
     "interests": ["Gadgets", "Gaming", "Soccer"],
-    "description": "Loves tinkering with electronics and cheering for his favorite team."
+    "latitude": 43.467865,
+    "longitude": -80.528475
   },
   {
     "name": "Mia Thompson",
     "age": 20,
     "major": "Psychology",
     "interests": ["Writing", "Photography", "Yoga"],
-    "description": "Exploring the human mind and capturing the beauty of life."
+    "latitude": 43.46759,
+    "longitude": -80.536865
   },
   {
     "name": "Nathan Kim",
     "age": 24,
     "major": "Software Engineering",
     "interests": ["Coding", "Piano", "Cycling"],
-    "description": "Combines logic and creativity to solve problems and create music."
+    "latitude": 43.470285,
+    "longitude": -80.540799
   },
   {
     "name": "Olivia Rivera",
     "age": 23,
     "major": "History",
     "interests": ["Reading", "Writing", "Hiking"],
-    "description": "Bringing the past to life with stories and exploration."
+    "latitude": 43.474179,
+    "longitude": -80.53771
   },
   {
     "name": "Paul Mitchell",
     "age": 22,
     "major": "Business Administration",
     "interests": ["Entrepreneurship", "Tennis", "Volunteering"],
-    "description": "Driven to innovate and make a difference in the world."
+    "latitude": 43.473425,
+    "longitude": -80.531349
   },
   {
     "name": "Quinn Howard",
     "age": 21,
     "major": "Graphic Design",
     "interests": ["Art", "Video Editing", "Skateboarding"],
-    "description": "Sees the world in vibrant colors and bold designs."
+    "latitude": 43.471091,
+    "longitude": -80.538055
   },
   {
     "name": "Rachel Simmons",
     "age": 20,
     "major": "Political Science",
     "interests": ["Debating", "Volunteering", "Cooking"],
-    "description": "A voice for change and advocate for community impact."
+    "latitude": 43.472066,
+    "longitude": -80.529292
   },
   {
     "name": "Samuel Jones",
     "age": 24,
     "major": "Music Composition",
     "interests": ["Piano", "Composing", "Traveling"],
-    "description": "Creating melodies that tell stories across cultures."
+    "latitude": 43.47282,
+    "longitude": -80.538569
   },
   {
     "name": "Tina Lopez",
     "age": 22,
     "major": "Fashion Design",
     "interests": ["Designing", "Dancing", "Photography"],
-    "description": "Turning ideas into runway-ready creations with passion."
+    "latitude": 43.474785,
+    "longitude": -80.539866
   }
 ]
