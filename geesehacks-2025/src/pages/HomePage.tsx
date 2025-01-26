@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { TeamOutlined, FileTextOutlined, FireOutlined } from '@ant-design/icons';
 import OtherBackgroundImage from '../assets/image.png';
@@ -12,6 +12,16 @@ interface Feature {
 
 const Home: React.FC = () => {
   const contentRef = useRef<HTMLDivElement | null>(null);
+  const [events, setEvents] = useState<any[]>([]);
+
+  useEffect(() => {
+    fetch('/public/locations.json')
+      .then((response) => response.json())
+      .then((data) => {
+        const shuffled = data.sort(() => 0.5 - Math.random());
+        setEvents(shuffled.slice(0, 3));
+      });
+  }, []);
 
   const features: Feature[] = [
     {
@@ -45,8 +55,10 @@ const Home: React.FC = () => {
 
   const handleIconClick = (iconName: string) => {
     console.log(`${iconName} button clicked`);
-    window.location.href = '/friends';
+    window.location.href = '/';
   };
+  const items = ['Friends', 'Study Buddies', 'Teammates', 'Mentors', 'Colleagues'];
+  const randomItem = items[Math.floor(Math.random() * items.length)];
 
   return (
     <div>
@@ -67,7 +79,7 @@ const Home: React.FC = () => {
               View Map
             </Link>
             <Link to="/friends" className="bg-white text-blue-700 font-bold py-3 px-6 rounded-lg">
-              Visit Friends
+              Search for {randomItem}
             </Link>
           </div>
         </div>
@@ -172,6 +184,30 @@ const Home: React.FC = () => {
             </div>
           </div>
         </div>
+          {/* Activities Section */}
+      <div className="py-20 px-4">
+        <div className="max-w-6xl mx-auto">
+        <h2 className="text-4xl font-bold text-center mb-16">Top Trending Near Me 🔥</h2>
+        <div className="flex justify-center">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {events.map((events, idx) => (
+                <div key={idx} className="bg-white rounded-lg shadow-md overflow-hidden">
+                  <img
+                    src={events.image}
+                    alt={events.title}
+                    className="w-full h-36 object-cover"
+                  />
+                  <div className="p-4">
+                    <h3 className="text-lg font-semibold text-gray-800">{events.title}</h3>
+                    <p className="text-gray-600">{events.participants}</p>
+                    <p className="text-gray-600">{events.location}</p>
+                  </div>
+                </div>
+              ))}
+              </div>
+              </div>
+              </div>
+      </div>
       </div>
     </div>
   );
