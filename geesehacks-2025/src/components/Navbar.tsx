@@ -22,7 +22,7 @@ const Navbar: React.FC = () => {
   const navItems = [
     { name: 'Home', path: '/' },
     { name: 'Map', path: '/map' },
-    { name: 'Account', path: '/account' },
+    { name: 'Login', path: '/account' },
   ];
 
   return (
@@ -31,8 +31,8 @@ const Navbar: React.FC = () => {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-4">
             <Link to="/" className="flex items-center">
-              <img src="/logo.png" alt="Logo" className="h-10 w-10" />
-              <span className="ml-2 text-xl font-medium text-gray-900">Geese Buds</span>
+              <img src="/assets/logo.png" alt="Logo" className="h-10 w-10" />
+              <span className="ml-2 text-xl font-medium text-gray-900">GeeseBuds</span>
             </Link>
             <div className="relative flex items-center">
               <input

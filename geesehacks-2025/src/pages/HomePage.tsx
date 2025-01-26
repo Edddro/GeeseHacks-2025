@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { TeamOutlined, FileTextOutlined, FireOutlined } from '@ant-design/icons';
-import OtherBackgroundImage from '../assets/image.png';
+import OtherBackgroundImage from '/assets/image.png';
 import { Dumbbell, Gamepad2, Headphones, Paintbrush, Plus, Utensils } from 'lucide-react';
 
 interface Feature {
@@ -15,7 +15,7 @@ const Home: React.FC = () => {
   const [events, setEvents] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch('/public/locations.json')
+    fetch('/locations.json')
       .then((response) => response.json())
       .then((data) => {
         const shuffled = data.sort(() => 0.5 - Math.random());

@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
         <div className="flex justify-between items-center">
           {/* Left Section: Copyright */}
           <p className="text-sm">
-            &copy; {new Date().getFullYear()} Geese Mates. All rights reserved.
+            &copy; {new Date().getFullYear()} GeeseBuds. All rights reserved.
           </p>
 
           {/* Right Section: Social Media Links */}
