@@ -27,14 +27,20 @@ const Map: React.FC = () => {
   const [inviteSent, setInviteSent] = useState(false);
 
   useEffect(() => {
-    // Fetch activities and people JSON data
+    fetchActivities();
+    fetchPeople();
+  }, []);
+
+  const fetchActivities = () => {
     fetch("/locations.json")
       .then((response) => response.json())
       .then((data) =>
         setActivities(data.sort(() => 0.5 - Math.random()).slice(0, 2))
       )
       .catch((error) => console.error("Failed to load activities:", error));
+  };
 
+  const fetchPeople = () => {
     fetch("/people.json")
       .then((response) => response.json())
       .then((data) => {
@@ -49,10 +55,9 @@ const Map: React.FC = () => {
         }
       })
       .catch((error) => console.error("Failed to load people:", error));
-  }, []);
+  };
 
   const generateNewGroup = () => {
-    // Generate a random group of 0 to 4 people per distance range
     const within1km = people
       .filter((person) => person.distance === 1)
       .slice(0, Math.floor(Math.random() * 5));
@@ -66,37 +71,29 @@ const Map: React.FC = () => {
   };
 
   useEffect(() => {
-    generateNewGroup(); // Generate a group when component loads
+    generateNewGroup();
   }, [people]);
 
   const handleInterestChange = () => {
-    // Fetch new people data and regenerate group on interest change
-    fetch("/people.json")
-      .then((response) => response.json())
-      .then((data) => {
-        if (Array.isArray(data)) {
-          const peopleWithDistance = data.map((person: Person) => ({
-            ...person,
-            distance: Math.floor(Math.random() * 5) + 1,
-          }));
-          setPeople(peopleWithDistance);
-          generateNewGroup(); // Regenerate group with new people data
-          setSelectedPerson(null); // Reset selected person
-          setInviteSent(false); // Reset invite status
-        } else {
-          console.error("Invalid data format received:", data);
-        }
-      })
-      .catch((error) => console.error("Failed to load people:", error));
+    fetchPeople();
+    generateNewGroup();
+    setSelectedPerson(null);
+    setInviteSent(false);
   };
 
   const handleIconClick = (index: number) => {
-    setSelectedPerson(currentGroup[index] || null); // Set selected person
-    setInviteSent(false); // Reset invite status
+    setSelectedPerson(currentGroup[index] || null);
+    setInviteSent(false);
   };
 
   const handleSendInvite = () => {
-    setInviteSent(true); // Set invite status to true
+    setInviteSent(true);
+  };
+
+  const handleSearchKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      fetchActivities();
+    }
   };
 
   const groupByDistance = (people: Person[]) => {
@@ -115,7 +112,6 @@ const Map: React.FC = () => {
 
   return (
     <div className="p-6 text-gray-800">
-      {/* Greeting and Search Bar */}
       <div className="text-center mb-8">
         <h1 className="text-3xl font-semibold text-blue-800">
           Hello, {name} 👋
@@ -124,14 +120,13 @@ const Map: React.FC = () => {
           type="text"
           placeholder="What do you want to do today?"
           className="mt-4 px-4 py-2 w-full max-w-md border border-gray-300 rounded-lg bg-white text-gray-800 shadow-sm focus:ring focus:ring-blue-300"
+          onKeyPress={handleSearchKeyPress}
         />
       </div>
 
-      {/* Map Section */}
       <div className="relative mb-8 w-3/4 mx-auto">
         <div className="w-full h-72 bg-gray-200 rounded-lg shadow-md relative">
           {selectedPerson ? (
-            // Show Google Maps iframe with selected person's coordinates
             selectedPerson.latitude && selectedPerson.longitude ? (
               <iframe
                 width="100%"
@@ -148,7 +143,6 @@ const Map: React.FC = () => {
               <p>Location data for this person is unavailable.</p>
             )
           ) : (
-            // Show map of University of Waterloo by default
             <iframe
               width="100%"
               height="100%"
@@ -193,9 +187,7 @@ const Map: React.FC = () => {
         </div>
       </div>
 
-      {/* Main Content Section */}
       <div className="flex justify-between items-start mb-8">
-        {/* Choose Interest Section */}
         <div className="flex flex-col items-center mt-8 max-w-xs mx-auto">
           <h3 className="text-xl font-semibold text-blue-800 mb-4">
             Choose an Interest
@@ -209,7 +201,6 @@ const Map: React.FC = () => {
             <option>Music</option>
           </select>
 
-          {/* Group 1km */}
           {within1km.length > 0 && (
             <div>
               <h4 className="text-lg font-semibold text-gray-800 mb-2">
@@ -233,7 +224,6 @@ const Map: React.FC = () => {
             </div>
           )}
 
-          {/* Group 3km */}
           {within3km.length > 0 && (
             <div>
               <h4 className="text-lg font-semibold text-gray-800 mb-2">
@@ -243,7 +233,7 @@ const Map: React.FC = () => {
                 {within3km.map((person, index) => (
                   <div
                     key={index}
-                    onClick={() => handleIconClick(index + within1km.length)} // Adjust index for 3km group
+                    onClick={() => handleIconClick(index + within1km.length)}
                     className={`w-12 h-12 rounded-full font-bold flex items-center justify-center cursor-pointer hover:bg-blue-200 ${
                       selectedPerson === person
                         ? "bg-blue-800 text-white"
@@ -257,7 +247,6 @@ const Map: React.FC = () => {
             </div>
           )}
 
-          {/* Group 5km */}
           {within5km.length > 0 && (
             <div>
               <h4 className="text-lg font-semibold text-gray-800 mb-2">
@@ -271,7 +260,7 @@ const Map: React.FC = () => {
                       handleIconClick(
                         index + within1km.length + within3km.length
                       )
-                    } // Adjust index for 5km group
+                    }
                     className={`w-12 h-12 rounded-full font-bold flex items-center justify-center cursor-pointer hover:bg-blue-200 ${
                       selectedPerson === person
                         ? "bg-blue-800 text-white"
@@ -286,7 +275,6 @@ const Map: React.FC = () => {
           )}
         </div>
 
-        {/* Ongoing Activities */}
         <div className="flex flex-col items-center max-w-sm mx-auto">
           <h3 className="text-xl font-semibold text-blue-800 mb-4">
             Ongoing Activities
