@@ -1,0 +1,143 @@
+
+[
+  {
+    "name": "Alice Wang",
+    "age": 21,
+    "major": "Computer Science",
+    "interests": ["Coding", "Hiking", "Photography"],
+    "description": "Enthusiastic about AI and loves exploring nature on weekends."
+  },
+  {
+    "name": "Bob Chen",
+    "age": 23,
+    "major": "Mechanical Engineering",
+    "interests": ["Robotics", "Gaming", "Basketball"],
+    "description": "Building robots by day and scoring threes by night."
+  },
+  {
+    "name": "Cathy Zhang",
+    "age": 20,
+    "major": "Biochemistry",
+    "interests": ["Cooking", "Research", "Volunteering"],
+    "description": "Passionate about sustainability and healthy eating habits."
+  },
+  {
+    "name": "David Lee",
+    "age": 22,
+    "major": "Mathematics",
+    "interests": ["Puzzles", "Chess", "Traveling"],
+    "description": "Always ready for a mental challenge or a spontaneous adventure."
+  },
+  {
+    "name": "Eva Patel",
+    "age": 21,
+    "major": "Environmental Engineering",
+    "interests": ["Gardening", "Music", "Reading"],
+    "description": "Committed to making the world greener, one step at a time."
+  },
+  {
+    "name": "Frank Nguyen",
+    "age": 24,
+    "major": "Civil Engineering",
+    "interests": ["Building", "Running", "Art"],
+    "description": "From designing cities to exploring galleries, creativity is key."
+  },
+  {
+    "name": "Grace Yu",
+    "age": 22,
+    "major": "Chemical Engineering",
+    "interests": ["Painting", "Cycling", "Yoga"],
+    "description": "Blends science and art for a creative approach to life."
+  },
+  {
+    "name": "Harry Smith",
+    "age": 23,
+    "major": "Physics",
+    "interests": ["Astronomy", "Camping", "Singing"],
+    "description": "Fascinated by the universe and loves stargazing under clear skies."
+  },
+  {
+    "name": "Irene Parker",
+    "age": 20,
+    "major": "Architecture",
+    "interests": ["Designing", "Movies", "Dancing"],
+    "description": "Reimagining spaces and moving to the rhythm of creativity."
+  },
+  {
+    "name": "Jack Turner",
+    "age": 25,
+    "major": "Aerospace Engineering",
+    "interests": ["Space Exploration", "Flying", "Photography"],
+    "description": "Dreaming of the stars and building the future of flight."
+  },
+  {
+    "name": "Kara Lee",
+    "age": 21,
+    "major": "Economics",
+    "interests": ["Investing", "Traveling", "Painting"],
+    "description": "Finding balance between numbers and artistic expression."
+  },
+  {
+    "name": "Leo Ramirez",
+    "age": 22,
+    "major": "Electrical Engineering",
+    "interests": ["Gadgets", "Gaming", "Soccer"],
+    "description": "Loves tinkering with electronics and cheering for his favorite team."
+  },
+  {
+    "name": "Mia Thompson",
+    "age": 20,
+    "major": "Psychology",
+    "interests": ["Writing", "Photography", "Yoga"],
+    "description": "Exploring the human mind and capturing the beauty of life."
+  },
+  {
+    "name": "Nathan Kim",
+    "age": 24,
+    "major": "Software Engineering",
+    "interests": ["Coding", "Piano", "Cycling"],
+    "description": "Combines logic and creativity to solve problems and create music."
+  },
+  {
+    "name": "Olivia Rivera",
+    "age": 23,
+    "major": "History",
+    "interests": ["Reading", "Writing", "Hiking"],
+    "description": "Bringing the past to life with stories and exploration."
+  },
+  {
+    "name": "Paul Mitchell",
+    "age": 22,
+    "major": "Business Administration",
+    "interests": ["Entrepreneurship", "Tennis", "Volunteering"],
+    "description": "Driven to innovate and make a difference in the world."
+  },
+  {
+    "name": "Quinn Howard",
+    "age": 21,
+    "major": "Graphic Design",
+    "interests": ["Art", "Video Editing", "Skateboarding"],
+    "description": "Sees the world in vibrant colors and bold designs."
+  },
+  {
+    "name": "Rachel Simmons",
+    "age": 20,
+    "major": "Political Science",
+    "interests": ["Debating", "Volunteering", "Cooking"],
+    "description": "A voice for change and advocate for community impact."
+  },
+  {
+    "name": "Samuel Jones",
+    "age": 24,
+    "major": "Music Composition",
+    "interests": ["Piano", "Composing", "Traveling"],
+    "description": "Creating melodies that tell stories across cultures."
+  },
+  {
+    "name": "Tina Lopez",
+    "age": 22,
+    "major": "Fashion Design",
+    "interests": ["Designing", "Dancing", "Photography"],
+    "description": "Turning ideas into runway-ready creations with passion."
+  }
+]
