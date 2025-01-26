@@ -24,6 +24,7 @@ const Map: React.FC = () => {
   const [people, setPeople] = useState<Person[]>([]);
   const [currentGroup, setCurrentGroup] = useState<Person[]>([]);
   const [selectedPerson, setSelectedPerson] = useState<Person | null>(null);
+  const [inviteSent, setInviteSent] = useState(false);
 
   useEffect(() => {
     // Fetch activities and people JSON data
@@ -81,6 +82,7 @@ const Map: React.FC = () => {
           setPeople(peopleWithDistance);
           generateNewGroup(); // Regenerate group with new people data
           setSelectedPerson(null); // Reset selected person
+          setInviteSent(false); // Reset invite status
         } else {
           console.error("Invalid data format received:", data);
         }
@@ -90,6 +92,11 @@ const Map: React.FC = () => {
 
   const handleIconClick = (index: number) => {
     setSelectedPerson(currentGroup[index] || null); // Set selected person
+    setInviteSent(false); // Reset invite status
+  };
+
+  const handleSendInvite = () => {
+    setInviteSent(true); // Set invite status to true
   };
 
   const groupByDistance = (people: Person[]) => {
@@ -174,8 +181,11 @@ const Map: React.FC = () => {
               </div>
               <p className="text-gray-600 mt-2">{selectedPerson.description}</p>
               <div className="flex justify-center mt-4">
-                <button className="px-4 py-2 bg-blue-800 text-white font-bold rounded-lg shadow-md hover:bg-blue-700">
-                  Send Invite
+                <button
+                  className="px-4 py-2 bg-blue-800 text-white font-bold rounded-lg shadow-md hover:bg-blue-700"
+                  onClick={handleSendInvite}
+                >
+                  {inviteSent ? "Invite Sent" : "Send Invite"}
                 </button>
               </div>
             </div>
